@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/jaksh/Desktop/Programs/Projects/diabetes_prediction/mlruns/917724354246876635/b2681312ae52429d85c5c3581e314aef/artifacts
+end_time: 1731070252464
+entry_point_name: ''
+experiment_id: '917724354246876635'
+lifecycle_stage: active
+run_id: b2681312ae52429d85c5c3581e314aef
+run_name: KNN
+run_uuid: b2681312ae52429d85c5c3581e314aef
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1731070246683
+status: 3
+tags: []
+user_id: jaksh

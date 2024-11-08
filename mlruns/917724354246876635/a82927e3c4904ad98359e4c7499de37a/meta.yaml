@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/jaksh/Desktop/Programs/Projects/diabetes_prediction/mlruns/917724354246876635/a82927e3c4904ad98359e4c7499de37a/artifacts
+end_time: 1731070246579
+entry_point_name: ''
+experiment_id: '917724354246876635'
+lifecycle_stage: active
+run_id: a82927e3c4904ad98359e4c7499de37a
+run_name: Logistic Regression
+run_uuid: a82927e3c4904ad98359e4c7499de37a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1731070236567
+status: 3
+tags: []
+user_id: jaksh

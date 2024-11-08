@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1731071164516
+current_stage: None
+description: ''
+last_updated_timestamp: 1731071164516
+name: XgBoost
+run_id: d1c8de9ce7194163a710accc004dd368
+run_link: ''
+source: file:///c:/Users/jaksh/Desktop/Programs/Projects/diabetes_prediction/mlruns/917724354246876635/d1c8de9ce7194163a710accc004dd368/artifacts/model_name
+status: READY
+status_message: null
+storage_location: file:///c:/Users/jaksh/Desktop/Programs/Projects/diabetes_prediction/mlruns/917724354246876635/d1c8de9ce7194163a710accc004dd368/artifacts/model_name
+user_id: null
+version: 1
