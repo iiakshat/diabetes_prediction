@@ -35,9 +35,12 @@ jobs:
               run: |
                 echo "# Model Evalutaion Results" >> report.md
                 echo "## Performance" >> report.md
+
                 echo "![](./matrix/performance_evaluation.jpeg)" >> report.md
                 echo "## ROC AUC" >> report.md
-                echo "![](./matrix/roc-auc.jpeg)" >> report.md
+
+                echo "![](././matrix/roc-auc.jpeg)" >> report.md
                 echo "## Feature Importance" >> report.md
+
                 echo "![](./matrix/XGBoost_feature_importance.png)" >> report.md
                 cml comment create report.md
