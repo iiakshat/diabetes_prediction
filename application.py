@@ -1,18 +1,13 @@
 import pandas as pd
-from fastapi import FastAPI, HTTPException, Request
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
-import uvicorn
+from flask import Flask, request, jsonify, render_template
 import pickle
-import os
 
 # Load the model
 modelpath = "mlruns/917724354246876635/d1c8de9ce7194163a710accc004dd368/artifacts/model/model.pkl"
 with open(modelpath, "rb") as file:
     model = pickle.load(file)
 
-app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app = Flask(__name__)
 
 # Define the expected feature names based on the training data
 expected_features = [
@@ -26,6 +21,11 @@ expected_features = [
 # Feature engineering for Glucose, Insulin, and BMI
 def transform_features(data):
     # Convert necessary fields to appropriate numeric types
+    data['Pregnancies'] = data['Pregnancies'].astype(int)
+    data['BloodPressure'] = data['BloodPressure'].astype(int)
+    data['SkinThickness'] = data['SkinThickness'].astype(int)
+    data['DiabetesPedigreeFunction'] = data['DiabetesPedigreeFunction'].astype(float)
+    data['Age'] = data['Age'].astype(int)
     data['Glucose'] = data['Glucose'].astype(float)
     data['Insulin'] = data['Insulin'].astype(float)
     data['BMI'] = data['BMI'].astype(float)
@@ -47,14 +47,14 @@ def transform_features(data):
     
     return data
 
-@app.get('/')
+@app.route('/')
 def home():
-    return HTMLResponse(content=open('static/index.html').read(), status_code=200)
+    return render_template('index.html')
 
-@app.post('/predictions')
-async def do_predictions(request: Request):
+@app.route('/predictions', methods=['POST'])
+def do_predictions():
     try:
-        test_data = await request.json()
+        test_data = request.json
         X_test = pd.DataFrame([test_data])
         
         # Transform features
@@ -81,10 +81,11 @@ async def do_predictions(request: Request):
         
         predictions = model.predict(X_test)
         predictions = predictions.tolist()
-        return {"predicted_academic_success_score": predictions[0]}
+        print(predictions)
+        return jsonify({"predicted": predictions[0]})
     except Exception as e:
         print(f"Error occurred: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    uvicorn.run(app="application:app", host="0.0.0.0", port=8000)
+    app.run(host="0.0.0.0", port=8000)
