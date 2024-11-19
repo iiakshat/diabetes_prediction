@@ -16,7 +16,7 @@ document.getElementById('prediction-form').addEventListener('submit', async func
 
         if (response.ok) {
             const result = await response.json();
-            document.getElementById('result').textContent = `Predicted Academic Success Score: ${result.predicted_academic_success_score}`;
+            document.getElementById('result').textContent = `Diabetes: ${result.predicted}`;
         } else {
             document.getElementById('result').textContent = 'Error in prediction';
         }
