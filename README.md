@@ -58,6 +58,7 @@ docker run -p 8000:8000 diabetes_prediction
 - Install Docker and pull the Docker image to the instance.
 - Run the application using the above Docker commands.
 
+Running @ http://65.2.121.33:8000/
 
 ## Technologies Used
 - __Flask:__ Backend web framework.
